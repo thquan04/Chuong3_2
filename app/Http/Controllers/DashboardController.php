@@ -12,7 +12,8 @@ class DashboardController extends Controller
         $totalProducts   = Product::count();
         $totalCategories = Category::count();
         $latestProducts  = Product::with('category')->latest()->take(5)->get();
+        $categories      = Category::all();
 
-        return view('dashboard.index', compact('totalProducts', 'totalCategories', 'latestProducts'));
+        return view('dashboard', compact('totalProducts', 'totalCategories', 'latestProducts', 'categories'));
     }
 }
